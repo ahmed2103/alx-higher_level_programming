@@ -1,4 +1,4 @@
-#include "list.h"
+#include "lists.h"
 
 /**
  * check_cycle - checks if a singly linked list has a cycle in it.
@@ -8,22 +8,16 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *temp;
+	listint_t *temp = list;
 
 	if (!list)
-	{
 		return (0);
-	}
 
-	while (list)
+	while (temp)
 	{
-		temp = list;
-		list = list->next;
-
-		if (temp <= list)
-		{
+		temp = temp->next;
+		if (temp == list)
 			return (1);
-		}
 	}
 	return (0);
 }
