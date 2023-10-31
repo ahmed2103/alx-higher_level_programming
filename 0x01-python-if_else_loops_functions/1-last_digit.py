@@ -8,4 +8,4 @@ elif last < 6 and last != 0:
     comparison = "less than 6 and not 0"
 else:
     comparison = "0"
-print(f"Last digit of {number} is {last} and is {comparison}")
+print("Last digit of {} is {} and is {}".format(number, last, comparison)
