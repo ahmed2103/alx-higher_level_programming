@@ -8,4 +8,4 @@ elif last < 6 and last != 0:
 else:
     comparison = "0"
 
-print(f"Last digit of {d:number} is {d:last} and is {s:comparison}")
+print(f"Last digit of {number:d} is {last:d} and is {comparison:s}")
