@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def wavg(my_list=[]):
     tws, tw = 0, 0
     for x, y in my_list:
