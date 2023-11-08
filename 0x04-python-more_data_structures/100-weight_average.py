@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-
-def wavg(my_list=[]):
-    if my_list
-        tws, tw = 0, 0
-        for x, y in my_list:
-            tws += x * y
-            tw += y
-        return tws / tw if tw else 0
+def weight_average(my_list=[]):
+    if(my_list):
+        return(sum(x*y for x, y in my_list) / sum(y for x, y in my_list))
     return 0
