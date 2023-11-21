@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 class Square:
     """class Square that defines a square"""
 
@@ -16,7 +15,7 @@ class Square:
     @size.setter
     def size(self, value):
         """Property setter to set the size"""
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
@@ -50,9 +49,9 @@ class Square:
         if self.__size == 0:
             print()
         else:
-            for _ in range(self.__position[1]):
+            for i in range(self.__position[1]):
                 print()
-            for _ in range(self.__size):
+            for i in range(self.__size):
                 print(" " * self.__position[0] + "#" * self.__size)
 
     def __str__(self):
