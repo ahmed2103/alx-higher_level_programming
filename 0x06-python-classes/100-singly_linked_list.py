@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 class Node:
     """ Definition of a node of a singly linked list
     """
