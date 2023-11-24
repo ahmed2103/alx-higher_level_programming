@@ -1,0 +1,66 @@
+===============================
+How to use 2-matrix_divided.py
+===============================
+
+This module contains a single function called ``matrix_divided()``.
+
+Functionality
+=============
+
+The ``matrix_divided()`` function divides all elements of a matrix by a given divider variable and returns a new matrix with the results.
+
+Examples
+--------
+
+Numeric Input:
+    >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Handling Decimal and Negative Numbers:
+    >>> matrix = [[1.5, 2.0, 3.0], [4.0, -5.0, -6]]
+    >>> matrix_divided(matrix, 3)
+    [[0.5, 0.67, 1.0], [1.33, -1.67, -2.0]]
+
+Handling Exceptions:
+    >>> matrix = [[], []]
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix = [[1, 2, 3], [1, 2]]
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: Each row of the matrix must have the same size
+
+    >>> matrix = "test"
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix = [[1, 2.0, "3"], [4, 5.0, "6"]]
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+        ...
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
+
+    # Additional cases handling invalid divider types
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_divided(matrix, str(3))
+    Traceback (most recent call last):
+        ...
+    TypeError: div must be a number
+
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+        ...
+    ZeroDivisionError: division by zero
