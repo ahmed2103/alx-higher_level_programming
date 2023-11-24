@@ -1,0 +1,75 @@
+===============================
+How to use 3-say_my_name.py
+===============================
+
+This module contains a function called ``say_my_name()`` which generates a formatted string with the provided first and last names.
+
+Examples
+--------
+
+Basic Usage:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Alan", "Alansworth")
+    My name is Alan Alansworth
+
+Handling Different Inputs:
+    >>> say_my_name("Alan")
+    My name is Alan
+
+    >>> say_my_name("A", "B")
+    My name is A B
+
+Handling Errors:
+    >>> say_my_name(["Alan"], "B")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Balan", 55)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    # Additional cases for handling missing or invalid arguments
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+    >>> say_my_name("")
+    My name is 
+
+    >>> say_my_name("", "")
+    My name is 
+
+    >>> say_my_name("", 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name("", "Smith")
+    My name is  Smith
+
+    >>> say_my_name(1)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name(1, "")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name(1, "Smith")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    # Proper function execution with valid inputs
+    >>> say_my_name("Bob", "Smith")
+    My name is Bob Smith
+
+    >>> say_my_name(["Bob"], "Smith")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
