@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """rectangle class"""
 
 
@@ -43,7 +44,6 @@ class Rectangle:
 
     def perimeter(self):
         """returns area of the rectangle"""
-        if self.height or self.width:
+        if self.height and self.width:
             return 2 * (self.width + self.height)
         return 0
-
