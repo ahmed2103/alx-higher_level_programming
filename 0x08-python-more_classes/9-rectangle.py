@@ -42,7 +42,7 @@ class Rectangle:
             raise ValueError('width must be >= 0')
         self._width = value
     def square(cls, size=0):
-        cls.width, cls.height = size
+        return cls(size, size)
     def area(self):
         """returns area of the object"""
         return self.width * self.height
