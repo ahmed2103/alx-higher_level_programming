@@ -63,3 +63,8 @@ class Rectangle:
     def __repr__(self):
         """formal representation of the rectangle"""
         return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """ rectangle deletion"""
+        Rectangle.number_of_instances -= 1
+        print("{}".format("Bye rectangle..."))
