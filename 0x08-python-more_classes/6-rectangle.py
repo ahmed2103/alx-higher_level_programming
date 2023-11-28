@@ -5,7 +5,7 @@
 
 class Rectangle:
     """This class represents a rectangle object"""
-
+    print_symbol = '#'
     number_of_instances = 0
     def __init__(self, width=0, height=0):
         """initializes a rectangle object"""
@@ -54,7 +54,8 @@ class Rectangle:
     def __str__(self):
         """informal string representation of the rectangle"""
         if self.perimeter():
-            return '\n'.join('#' * self.width for _ in range(self.height))
+            return '\n'.join("{}".format(self.print_symbol) * self.width
+                             for x in range(self.height)))
         else:
             return ''
 
