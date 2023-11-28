@@ -46,8 +46,8 @@ class Rectangle:
             return 2 * (self.width + self.height)
         return 0
 
-    def __str__(self):
-        """informal string representation of the rectangle"""
-        if self.perimeter():
-            return '\n'.join('#' * self.width for _ in range(self.height))
-        return ''
+   def __str__(self):
+        """modifies str object"""
+        if not self.perimeter():
+            return ""
+        return('\n'.join('#' * self.width for x in range(self.height)))
