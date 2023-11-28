@@ -1,6 +1,3 @@
-"""rectangle class"""
-
-
 class Rectangle:
     """This class represents a rectangle object"""
 
@@ -48,9 +45,8 @@ class Rectangle:
         return 0
 
     def __str__(self):
-        """informal string representation of of the rectangle"""
-            if is self.perimeter:
-                str = '\n'.join('#' * self.width for _ in range(self.height))
-            else:
-                str =''
-            return str
+        """informal string representation of the rectangle"""
+        if self.perimeter():
+            return '\n'.join('#' * self.width for _ in range(self.height))
+        else:
+            return ''
