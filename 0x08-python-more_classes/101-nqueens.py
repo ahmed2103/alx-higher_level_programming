@@ -2,21 +2,24 @@
 """Solves the N-queens puzzle.
 
 Determines all possible solutions to placing N
-non-attacking queens on an NxN chessboard.
+non-attacking queens on an N×N chessboard.
 
 Example:
     $ ./101-nqueens.py N
 
 N must be an integer greater than or equal to 4.
 
-Attributes:
-    board (list): A list of lists representing the chessboard.
-    solutions (list): A list of lists containing solutions.
+The program should print every possible solution to the problem.
+One solution per line.
 
-Solutions are represented in the format [[r, c], [r, c], [r, c], [r, c]]
-where `r` and `c` represent the row and column, respectively, where a
-queen must be placed on the chessboard.
+Format: see example
+You don’t have to print the solutions in a specific order.
+
+You are only allowed to import the sys module.
+
+Read: Queen, Backtracking
 """
+
 import sys
 
 def init_board(n):
@@ -35,7 +38,6 @@ def get_solution(board):
             if cell == 'Q':
                 solution.append([r, c])
     return solution
-
 
 def xout(board, row, col):
     """X out spots on a chessboard.
@@ -61,31 +63,33 @@ def xout(board, row, col):
         if row - i >= 0 and col + i < n:
             board[row - i][col + i] = 'x'
 
-def recursive_solve(board, row, queens, solutions):
+def recursive_solve(board, row, queens):
     """Recursively solve an N-queens puzzle.
 
     Args:
         board (list): The current working chessboard.
         row (int): The current working row.
         queens (int): The current number of placed queens.
-        solutions (list): A list of lists of solutions.
-    
+
     Returns:
         solutions
     """
     n = len(board)
     if queens == n:
-        solutions.append(get_solution(board))
-        return solutions
+        print_solution(board)
+        return
 
     for c in range(n):
         if board[row][c] == ' ':
             tmp_board = board_deepcopy(board)
             tmp_board[row][c] = 'Q'
             xout(tmp_board, row, c)
-            solutions = recursive_solve(tmp_board, row + 1, queens + 1, solutions)
+            recursive_solve(tmp_board, row + 1, queens + 1)
 
-    return solutions
+def print_solution(board):
+    """Print the solution in the specified format."""
+    solution = get_solution(board)
+    print(solution)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -94,11 +98,10 @@ if __name__ == "__main__":
     if not sys.argv[1].isdigit():
         print("N must be a number")
         sys.exit(1)
-    if int(sys.argv[1]) < 4:
+    N = int(sys.argv[1])
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    board = init_board(int(sys.argv[1]))
-    solutions = recursive_solve(board, 0, 0, [])
-    for sol in solutions:
-        print(sol)
+    board = init_board(N)
+    recursive_solve(board, 0, 0)
