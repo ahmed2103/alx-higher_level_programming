@@ -29,7 +29,13 @@ def board_deepcopy(board):
 
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
-    return [[r, c] for r, row in enumerate(board) for c, cell in enumerate(row) if cell == 'Q']
+    solution = []
+    for r, row in enumerate(board):
+        for c, cell in enumerate(row):
+            if cell == 'Q':
+                solution.append([r, c])
+    return solution
+
 
 def xout(board, row, col):
     """X out spots on a chessboard.
