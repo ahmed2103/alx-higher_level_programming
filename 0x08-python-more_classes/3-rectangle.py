@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 class Rectangle:
     """This class represents a rectangle object"""
 
@@ -47,7 +46,7 @@ class Rectangle:
 
     def __str__(self):
         """informal string representation of the rectangle"""
-        if self.perimeter():
+        if self.perimeter():  # Fixed this line
             return '\n'.join('#' * self.width for _ in range(self.height))
         else:
             return ''
