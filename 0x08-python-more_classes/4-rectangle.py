@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 
 """rectangle class"""
 
@@ -56,6 +55,6 @@ class Rectangle:
         else:
             return ''
 
-        def __repr__(self):
-            """formal representation of othe rectangle"""
-            return "Rectangle({}, {})".format(self.width, self.height)
+    def __repr__(self):
+        """formal representation of othe rectangle"""
+        return "Rectangle({}, {})".format(self.width, self.height)
