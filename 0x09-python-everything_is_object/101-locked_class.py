@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 class LockedClass:
     """LockedClass demonstrates the use of the __slots__ attribute to restrict
     dynamic attribute creation.
