@@ -1,12 +1,9 @@
-def append_write(filename="", text=""):
-    """Append `text` to `filename` if it exists, or create `filename` if it doesn't.
+#!/usr/bin/python3
+def read_file(filename=""):
+    """Read the contents of a file in utf-8 encoding and print to stdout.
 
     Args:
-        filename (str): The file to write to or create.
-        text (str): The text to append in utf-8 encoding.
-
-    Returns:
-        int: Number of characters written to the file.
+        filename (str): The file to open and read.
     """
-    with open(filename, 'a', encoding='utf-8') as file:
-        return file.write(text)
+    with open(filename, 'r', encoding='utf-8') as file:
+        print(file.read(), end="")
