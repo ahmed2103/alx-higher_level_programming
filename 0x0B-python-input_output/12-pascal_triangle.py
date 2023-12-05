@@ -3,14 +3,7 @@
 """module return nums of pascal triangle"""
 
 def pascal_triangle(n):
-   """
-    function that returns a list of lists of integers
-
-    :param n: integer number limit
-    :type n: int
-    :return: list of lists of integers representing the pascal triangle
-    :rtype: list
-    """
+    """return nums of pascal triangle"""
     pascal = []
     prev = []
     for i in range(n):
@@ -20,3 +13,5 @@ def pascal_triangle(n):
         pascal.append(curr)
         prev = curr
     return pascal
+
+print(pascal_triangle(5))
