@@ -13,4 +13,3 @@ def pascal_triangle(n):
         pascal.append(curr)
         prev = curr
     return pascal
-
