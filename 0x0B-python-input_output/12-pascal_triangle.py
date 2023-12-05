@@ -14,4 +14,3 @@ def pascal_triangle(n):
         prev = curr
     return pascal
 
-print(pascal_triangle(5))
