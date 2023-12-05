@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module to read a file"""
+
 def read_file(filename=""):
     """Read the contents of a file in utf-8 encoding and print to stdout.
 
