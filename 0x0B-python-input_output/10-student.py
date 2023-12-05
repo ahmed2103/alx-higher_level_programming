@@ -10,14 +10,14 @@ class Student:
         self.last_name = last_name
         self.age = age
 
+    def to_json(self, attrs=None):
+        """Create copy of attributes for use in json string
 
-def to_json(self, attrs=None):
-    """Create copy of attributes for use in json string
-
-    If `attrs` is not None, use `attrs` list to select desired attributes.
-    """
-    if attrs is None or not isinstance(attrs, (list, tuple)):
-        return self.__dict__.copy()
-    else:
-        req = {k: v for k, v in self.__dict__.items() if k in attrs}
-        return req
+        If `attrs` is not None, use `attrs` list to select desired attributes.
+        """
+        if attrs is None or not isinstance(attrs, (list, tuple)):
+            return self.__dict__.copy()
+        else:
+            ret = {k: v for k, v in filter(lambda x: x[0] in attrs,
+                                           self.__dict__.items())}
+            return ret
