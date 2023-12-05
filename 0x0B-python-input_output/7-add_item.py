@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-
-"""module loads object from json file"""
-from json import load
-def load_from_json_file(file_path):
-    """
-    Loads data from a JSON file and returns the corresponding Python object.
-
-    :param file_path: The path to the JSON file.
-    :type file_path: str
-    :return: The Python object corresponding to the JSON data in the file.
-    :rtype: Any
-    """
-    with open(file_path) as file:
-        return load(file)
+"""
+script  that adds all arguments to a Python list, and then save them to a file
+"""
+from sys import argv
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+if __name__ == "__main__":
+    try:
+        my_list = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        my_list = []
+    my_list += argv[1:]
+    save_to_json_file(my_list, "add_item.json")
