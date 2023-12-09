@@ -38,7 +38,7 @@ class Rectangle(Base):
         @property
         def height(self):
             """height of the rectangle getter"""
-            return self._width
+            return self._height
         @width.setter
 
         def height(self, value):
@@ -67,7 +67,7 @@ class Rectangle(Base):
         def y(self):
             """getter for y position of the rectangle
             :return: y position of the"""
-            return self._width
+            return self._y
         @y.setter
         def y(self, value):
             """setter for y position of the rectangle"""
