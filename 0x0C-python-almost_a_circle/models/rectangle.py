@@ -2,6 +2,7 @@
 """Module containing Rectangle class"""
 from models.base import Base
 
+
 class Rectangle(Base):
     """Rectangle class that represents a rectangle inherited from Base"""
 
@@ -60,7 +61,7 @@ class Rectangle(Base):
     def x(self, value):
         """x position of the rectangle"""
         if not isinstance(value, int):
-            raise TypeError('x position must be an integer')
+            raise TypeError('x be an integer')
         if not value >= 0:
             raise ValueError('x must be >= 0')
         self._x = value
@@ -74,7 +75,7 @@ class Rectangle(Base):
     def y(self, value):
         """y position of the rectangle"""
         if not isinstance(value, int):
-            raise TypeError('y position must be an integer')
+            raise TypeError('y must be an integer')
         if not value >= 0:
             raise ValueError('y must be >= 0')
         self._y = value
@@ -85,8 +86,27 @@ class Rectangle(Base):
 
     def display(self):
         """method to represent the rectangle in stdout `#` units"""
-        print('\n'.join('#' * self.width for _ in range(self.height)))
+        print('\n' * self._y +
+              '\n'.join([' ' * self._x +
+                         '#' * self._width
+                         for _ in range(self._height)]))
 
     def __str__(self):
         """method to represent the rectangle informally"""
-        return '[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}'.format(self.id, self.x, self.y, self.width, self.height)
+        return '[{:s}] ({:d}) {:d}/{:d} - {:d}/{:d}'.format(
+            self.__class__.__name__,
+            self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """method to update the rectangle with new attributes"""
+        attrs = ("id", "width", "height", "x", "y")
+        for attr, arg in zip(attrs, args):
+            setattr(self, attr, arg)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def to_dictionary(self):
+        """method to return a dictionary representation of the rectangle"""
+        return {'id': self.id, 'width': self.width,
+                'height': self.height, 'x': self.x,
+                'y': self.y}
