@@ -44,9 +44,7 @@ class Base:
         :param json_string: JSON string to deserialize.
         :returns: List of objects.
         """
-        if not json_string or json_string is None:
-            return []
-        return loads(json_string)
+        return loads(json_string) if json_string else "[]"
 
     @classmethod
     def create(cls, **dictionary):
