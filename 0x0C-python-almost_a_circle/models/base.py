@@ -22,7 +22,9 @@ class Base:
         :param list_dictionaries: List of dictionaries.
         :return: JSON string.
         """
-        return dumps(list_dictionaries) if list_dictionaries else "[]"
+        if not list_dictionaries:
+            list_dictionaries = []
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
