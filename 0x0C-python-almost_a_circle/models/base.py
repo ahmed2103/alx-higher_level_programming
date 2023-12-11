@@ -75,3 +75,26 @@ class Base:
                 return [cls.create(**kwag) for kwag in list_dicts]
         except FileNotFoundError:
             return []
+    @classmethod
+    def load_from_file_csv(cls):
+        """Class method to load file containing csv representation of objects.
+        Attempts to open file named '<class name>.csv' and convert back to
+        original list of objects. If it does not exist, returns empty list.
+        """
+        try:
+            with open("{}.csv".format(cls.__name__), 'r') as csvf:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == "Square":
+                    fieldnames = ['id', 'size', 'x', 'y']
+                else:
+                    fieldnames = ['id']
+                reader = csv.DictReader(csvf, fieldnames=fieldnames)
+                list_objs = []
+                for row in reader:
+                    for key in row:
+                        row[key] = int(row[key])
+                    list_objs.append(cls.create(**row))
+                return list_objs
+        except FileNotFoundError:
+            return []
