@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import unittest
 from io import StringIO
 from models.rectangle import Rectangle
