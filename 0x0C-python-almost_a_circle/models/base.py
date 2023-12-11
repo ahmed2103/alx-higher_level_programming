@@ -1,9 +1,5 @@
-#!/usr/bin/python3
-
-"""Module representing the Base class"""
-
 from json import dumps, load
-
+import csv
 
 class Base:
     """Base class"""
@@ -11,24 +7,28 @@ class Base:
 
     def __init__(self, id=None):
         """Initialize class variables"""
-        Base.__nb_objects += 1
-        self.id = id if id is not None else Base.__nb_objects
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
         """
-        returns the JSON string representation of list_dictionaries
-        :param list_dictionaries: list of dictionaries
-        :return: JSON
+        Returns the JSON string representation of list_dictionaries.
+        :param list_dictionaries: List of dictionaries.
+        :return: JSON string.
         """
         return dumps(list_dictionaries) if list_dictionaries else "[]"
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """saves above json to file
-        :param cls: class as it is class method
-        :param list_objs: list of dictionaries
-        :returns: none
+        """
+        Saves the list of objects to a JSON file.
+        :param cls: Class (as it is a class method).
+        :param list_objs: List of objects.
+        :returns: None.
         """
         if not list_objs:
             list_objs = []
@@ -38,19 +38,19 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-        deseralizes json
-        :param json_string: json string to deseralize
-        :returns: objects in dictionary
+        Deserializes a JSON string into a list of objects.
+        :param json_string: JSON string to deserialize.
+        :returns: List of objects.
         """
         return load(json_string) if json_string else []
 
     @classmethod
     def create(cls, **dictionary):
         """
-        Create a Rectangle or Square instance with “dummy” mandatory attributes.
-        :param cls: class to create instance
-        :param dictionary: that have necessary attributes.
-        :return:instance with dummy attributes.
+        Creates an instance of the class with "dummy" mandatory attributes.
+        :param cls: Class to create an instance of.
+        :param dictionary: Dictionary with necessary attributes.
+        :return: Instance with dummy attributes.
         """
         if cls.__name__ == "Rectangle":
             c = cls(1, 1)
@@ -64,10 +64,10 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """
-        class method that loads seralized json and deseraize it then crate the object
-        :param cls: class of the object.
-        :return: the object created by create function
-        :raise: FileNotFoundError if the file does not exist
+        Loads serialized JSON from a file and creates objects.
+        :param cls: Class of the object.
+        :return: List of objects created by create function.
+        :raise: FileNotFoundError if the file does not exist.
         """
         try:
             with open("{}.json".format(cls.__name__), "r") as file:
@@ -75,11 +75,13 @@ class Base:
                 return [cls.create(**kwag) for kwag in list_dicts]
         except FileNotFoundError:
             return []
+
     @classmethod
     def load_from_file_csv(cls):
-        """Class method to load file containing csv representation of objects.
-        Attempts to open file named '<class name>.csv' and convert back to
-        original list of objects. If it does not exist, returns empty list.
+        """
+        Loads a file containing CSV representation of objects.
+        Attempts to open a file named '<class name>.csv' and convert it back to the original list of objects.
+        If the file does not exist, returns an empty list.
         """
         try:
             with open("{}.csv".format(cls.__name__), 'r') as csvf:
