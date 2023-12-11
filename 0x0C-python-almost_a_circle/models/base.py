@@ -1,5 +1,6 @@
-#!/usr/bin/python
-from json import dumps, load
+#!/usr/bin/python3
+
+from json import dumps, load, loads
 import csv
 
 class Base:
@@ -43,20 +44,22 @@ class Base:
         :param json_string: JSON string to deserialize.
         :returns: List of objects.
         """
-        return load(json_string) if json_string else []
+        if not json_string or json_string is None:
+            return []
+        return loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
         """
-        Creates an instance of the class with "dummy" mandatory attributes.
+        Creates an instance of the class with attributes from a dictionary.
         :param cls: Class to create an instance of.
         :param dictionary: Dictionary with necessary attributes.
-        :return: Instance with dummy attributes.
+        :return: Instance with specified attributes.
         """
         if cls.__name__ == "Rectangle":
-            c = cls(1, 1)
+            c = cls(dictionary.get('width', 1), dictionary.get('height', 1))
         elif cls.__name__ == "Square":
-            c = cls(1)
+            c = cls(dictionary.get('size', 1))
         else:
             c = cls()
         c.update(**dictionary)
@@ -73,7 +76,7 @@ class Base:
         try:
             with open("{}.json".format(cls.__name__), "r") as file:
                 list_dicts = cls.from_json_string(file.read())
-                return [cls.create(**kwag) for kwag in list_dicts]
+                return [cls.create(**kwarg) for kwarg in list_dicts]
         except FileNotFoundError:
             return []
 
