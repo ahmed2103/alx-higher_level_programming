@@ -1,12 +1,8 @@
 #!/usr/bin/node
-
-function secondBiggest (arr) {
-  if (arr.length <= 2) {
-    return 0;
-  }
-  const sortedArr = arr.sort((a, b) => b - a);
-  return sortedArr[1];
-}
-
-const args = process.argv.slice(2).map(Number);
-console.log(secondBiggest(args));
+if (process.argv.length < 4) {
+  console.log(0);
+} else {
+  process.argv.sort((a, b) => a - b);
+  process.argv.reverse();
+  console.log(process.argv[1]);
+} 
