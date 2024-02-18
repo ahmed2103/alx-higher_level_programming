@@ -9,7 +9,6 @@ if __name__ == "__main__":
     db = MySQLdb.connect(user=argv[1], passwd=argv[2], host="localhost", db=argv[3])
     curs = db.cursor()
     
-    # Using parameterized query to prevent SQL injection
     curs.execute("SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC", (argv[4],))
     
     for row in curs.fetchall():
