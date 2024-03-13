@@ -2,6 +2,6 @@
 let ncall = 0;
 
 exports.logMe = function (item) {
-    console.log(ncall+ ': ' + item);
-    ncall++;
-}
+  console.log(ncall + ': ' + item);
+  ncall++;
+};
