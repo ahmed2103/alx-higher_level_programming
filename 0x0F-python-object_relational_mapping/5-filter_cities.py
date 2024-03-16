@@ -18,6 +18,7 @@ if __name__ == "__main__":
                     WHERE states.name = %s""", (state_name,))
     rows = cur.fetchall()
     for row in rows:
-        print(row[0], end =', ')
+        city_name = row[0]
+        print(city_name, end=', ')
     cur.close()
     conn.close()
