@@ -14,7 +14,7 @@ if __name__ == "__main__":
                            db = argv[3])
     cur = conn.cursor()
     safe = argv[4]
-    cur.execute("SELECT * FROM WHERE name LIKE %s", (safe, ))
+    cur.execute("SELECT * FROM states WHERE name LIKE %s", (safe, ))
     rows = cur.fetchall()
     for row in rows:
         print(row)
