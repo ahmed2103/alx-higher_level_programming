@@ -16,6 +16,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     state = session.query(State).filter_by(id = 2).first()
-    session.name = 'New Mexico'
+    state.name = 'New Mexico'
     session.commit()
     session.close()
