@@ -14,7 +14,7 @@ if __name__ == "__main__":
                            .format(argv[1], argv[2], argv[3]))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
-    session = Session(engine)
+    session = Session()
     state = session.query(State).filter_by(id = 2).first()
     session.name = 'New Mexico'
     session.commit()
