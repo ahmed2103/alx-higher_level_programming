@@ -6,7 +6,7 @@ def find_peak(list_of_integers):
     """function to get max int inspired from binary search not actually"""
 
     if not list_of_integers:
-        return NONE
+        return None
     
     right = len(list_of_integers) - 1 #everything starts from zeroo
     left = 0
