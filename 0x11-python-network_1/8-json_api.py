@@ -7,7 +7,8 @@
 if __name__ == "__main__":
     from sys import argv
     from requests import post
-    payload = {'q': argv[1]}
+    letter = argv[1] if len(argv) > 1 else letter = ''
+    payload = {'q': letter}
     res = post("http://0.0.0.0:5000/search_user", data=payload)
     try:
         j = res.json()
