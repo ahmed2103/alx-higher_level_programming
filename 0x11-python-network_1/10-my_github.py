@@ -9,6 +9,6 @@ if __name__ == "__main__":
     res = get('https://api.github.com/user', auth=(argv[1], argv[2]))
     try:
         j = res.json()
-        print(j['id'])
+        print(j.get('id'))
     except ValueError as e:
         print(e)
