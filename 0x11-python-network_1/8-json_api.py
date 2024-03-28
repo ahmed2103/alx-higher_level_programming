@@ -7,7 +7,7 @@
 if __name__ == "__main__":
     from sys import argv
     from requests import post
-    letter = argv[1] if len(argv) > 1 else letter = ''
+    letter = argv[1] if len(argv) > 1 else ''
     payload = {'q': letter}
     res = post("http://0.0.0.0:5000/search_user", data=payload)
     try:
