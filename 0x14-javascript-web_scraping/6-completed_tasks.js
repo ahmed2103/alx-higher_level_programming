@@ -6,7 +6,7 @@ request(url, function (error, response, body) {
     console.error(error);
   }
   const tasks = {};
-  JSON.parse(body).map((task) => {
+  JSON.parse(body).forEach((task) => {
     if (task.completed) {
       if (tasks[task.userId] === undefined) {
         tasks[task.userId] = 1;
